@@ -1,25 +1,36 @@
-import React from 'react'
+import React , {useState} from 'react'
 import List from './List'
-
-let todos = [
-  { id:1, title:'Shit', description:'Xablau!', due:'01/01/2012', priority:'High', resolved:false},
-  { id:2, title:'Eat', description:'Xablau!', due:'01/01/2012', priority:'High', resolved:true},
-  { id:3, title:'Sleep', description:'Xablau!', due:'01/01/2012', priority:'Low', resolved:false},
-  { id:4, title:'Code', description:'Xablau!', due:'03/02/2020', priority:'High', resolved:false},
-  { id:5, title:'Pay', description:'Xablau!', due:'01/01/2012', priority:'Low', resolved:true},
-
-]
+import Icon from './Icon'
+import api from '../api'
 
 const App = () => {
+  const [todos, setTodos] = useState(api.readTodos())
+
+  const changedTodos = (alt) => {
+    const altTodos = todos.filter( todo => todo.id!== alt.id)
+    altTodos.push(alt)
+    setTodos(altTodos)
+  }
+
+  const deleteTodos = (alt) =>{
+    const altTodos = todos.filter( todo => todo.id!== alt.id)
+    setTodos(altTodos)
+  }
+
+  const pushTodo = (newTodo) => {
+    api.createTodo(newTodo)
+  }
+
   return (
     <div>
+      <Icon type='add' onClick= {()=> pushTodo(666)} />
       <p className='title'>TO DO LIST!</p>
       <div className='list'>
-        <List title='Pending' className='pending'  todos = {todos.filter(todo => !todo.resolved)}/>
-        <List title='Resolved' className='resolved' todos = {todos.filter(todo => todo.resolved)}/>
+        <List title='Pending' className='pending'  todos = {todos.filter(todo => !todo.resolved)} changed={(alt)=>changedTodos(alt)} deleted={(alt)=> deleteTodos(alt)}/>
+        <List title='Resolved' className='resolved' todos={todos.filter(todo => todo.resolved)} changed={(alt) => changedTodos(alt)} deleted={(alt) => deleteTodos(alt)}/>
       </div>
       <div className='subtitles'>
-        <p>Subtitles</p>
+        <p>Subtitles:</p>
         <div className='high'>High Priority</div>
         <div className='low'>Low Priority</div>
       </div>
