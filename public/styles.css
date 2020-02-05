@@ -103,7 +103,39 @@ html{
     border-bottom: 2px solid whitesmoke;
 }
 
-@media only screen and (max-width: 800px){
+.addForm{
+  display: flex;
+  flex-direction: row;
+  margin: 2%;
+  align-items: center;
+}
+
+.selectBlock{
+  margin-top: 1%;
+  width: 100%;
+}
+.todoForm, .invisible{
+  width: 50% ;
+}
+
+.invisible{
+  display: none;
+}
+
+.addForm label{
+  padding: 0 1%
+}
+
+.addForm button{
+  border: 0px;
+  border-radius: 2px;
+  font-size: medium;
+  color:whitesmoke;
+  background-color: #05a;
+  margin-left: 37% ;
+}
+
+@media only screen and (max-width: 950px){
   .list{
     display: flex;
     align-items: center;
@@ -126,6 +158,27 @@ html{
 
   .date, .dateExperied{
     border: 0 ;
+  }
+
+  .todoForm{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .todoForm label , input{
+    margin: 1% 2%;
+    padding-right: 1%;
+  }
+
+  .todoForm button{
+    width: 40%;
+    float: right;
+    margin-right: 2%;
+  }
+
+  .selectBlock{
+    width: 100%;
+    margin-top: 4%
   }
 
   .subtitles{
