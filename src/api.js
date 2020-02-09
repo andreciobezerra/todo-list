@@ -1,18 +1,13 @@
-let todos = [{ id: 1, title: 'Shit', due: '01/01/2012', priority: 'High', resolved: false },
-  { id: 2, title: 'Eat', due: '01/01/2012', priority: 'High', resolved: true },
-  { id: 3, title: 'Sleep', due: '01/01/2012', priority: 'Low', resolved: false },
-  { id: 4, title: 'Code', due: '03/02/2020', priority: 'High', resolved: false },
-  { id: 5, title: 'Pay', due: '01/01/2012', priority: 'Low', resolved: true },
-] 
+import db from './firebase';
 
-const createTodo = (newTodo) => todos.push(newTodo)
+const createTodo = async (newTodo, id) => await db.collection('todos').doc(id.toString()).set(newTodo);
 
-const readTodos = () => todos
+const readTodos = () => db.collection('todos').get();
 
-const updateTodo = (xablau) => console.log('xablau')
+const updateTodo = (id, alt) => db.collection('todos').doc(id.toString()).update({resolved: alt.resolved});
 
-const deleteTodo = () => todos.splice(0,-1)
+const deleteTodo = (id) => db.collection('todos').doc(id.toString()).delete();
 
-const api = {createTodo,readTodos, updateTodo, deleteTodo}
+const api = { createTodo, readTodos, updateTodo, deleteTodo };
 
-export default api
+export default api;

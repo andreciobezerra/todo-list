@@ -3,6 +3,17 @@ html{
   color: aliceblue;
 }
 
+.loading{
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.loading img{
+  height:30vh;
+  margin-top: 30vh;
+}
+
 .title{
   display: flex;
   justify-content: center;
@@ -46,7 +57,7 @@ html{
   width: 100%;
   /*height: 8vh;*/
   margin-bottom: 2vh;
-  padding-left:1vw; 
+  padding-left:0vw; 
 }
 
 .high,.low{
@@ -86,7 +97,7 @@ html{
 }
 
 .date,.dateExperied{
-  padding-left: 1%;
+  padding-left: 2px;
   border-left: 1px solid whitesmoke;
 }
 
@@ -114,6 +125,7 @@ html{
   margin-top: 1%;
   width: 100%;
 }
+
 .todoForm, .invisible{
   width: 50% ;
 }
