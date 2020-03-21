@@ -7,6 +7,7 @@ This project has the learning purpose of that some technologies, wich are seen b
 * HTML 5
 * CSS 3
 * React w/hooks
+* Firebase
 
 ## How to install and use
 
