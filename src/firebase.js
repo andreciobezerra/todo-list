@@ -1,4 +1,6 @@
+/* eslint-disable no-undef */
 import firebase from 'firebase/app';
+// eslint-disable-next-line no-unused-vars
 import firestore from 'firebase/firestore';
 
 // Your web app's Firebase configuration
@@ -15,6 +17,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const appFirebase = firebase.initializeApp(firebaseConfig);
 
+// Initialize Firestore
 const db = appFirebase.firestore();
 
 export default db;

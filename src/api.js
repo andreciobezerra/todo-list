@@ -1,3 +1,4 @@
+// api for comunication with Google Firestore;
 import db from './firebase';
 
 const createTodo = async (newTodo, id) => await db.collection('todos').doc(id.toString()).set(newTodo);
